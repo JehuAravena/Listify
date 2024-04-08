@@ -1,0 +1,88 @@
+<div class="switch-task-list">
+  <mat-slide-toggle class="taskTodayToggle" [(ngModel)]="this.taskService.isTodayCheck">
+    <p *ngIf="this.taskService.isTodayCheck">Today's tasks</p>
+    <p *ngIf="!this.taskService.isTodayCheck">All tasks</p>
+  </mat-slide-toggle>
+</div>
+
+<div class="task-list-full-container">
+  <div *ngIf="
+      (!this.taskService.isTodayCheck && tasks?.length === 0) ||
+      (this.taskService.isTodayCheck && todayTasks?.length === 0)
+    ">
+    <h1 class="msg-task">
+      It seems like you don't have any tasks. Why don't you create some using the
+      "Create Task" button?
+    </h1>
+  </div>
+  <ng-container *ngIf="!this.taskService.isTodayCheck">
+    <div class="task-container" *ngFor="let task of tasks; else: noTasks">
+      <div class="task-title">
+        {{ task.TA_TITLE }}
+        <mat-checkbox
+          class="check"
+          (click)="completeTask(task.TA_ID_TASK)"
+          [disabled]="isTaskDone(task.TA_ID_TASK)"
+          [checked]="isTaskDone(task.TA_ID_TASK)"
+        >
+        </mat-checkbox>
+      </div>
+      <div class="task-description">
+        {{ task.TA_DESCRIPTION }}
+      </div>
+      <br />
+      <div class="task-priority-container">
+        <p class="task-priority" [ngClass]="'priority-' + task.TA_PRIORITY">
+          Priority: {{ task.TA_PRIORITY }}
+        </p>
+      </div>
+      <div class="e-d-icon" matColumnDef="editColumn">
+        <div class="edit-icon">
+          <mat-icon [id]="'edit-task-btn' + task.TA_ID_TASK" (click)="displayDialogs.openUpdateTask(task.TA_ID_TASK)"
+            >edit</mat-icon
+          >
+        </div>
+        <div class="del-icon">
+          <mat-icon id="delete-task-btn" (click)="deleteTask(task.TA_ID_TASK)"
+            >delete_forever</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="this.taskService.isTodayCheck">
+    <div class="task-container" *ngFor="let task of todayTasks; else: noTasks">
+      <div class="task-title">
+        {{ task.TA_TITLE }}
+        <mat-checkbox
+          class="check"
+          (click)="completeTask(task.TA_ID_TASK)"
+          [disabled]="isTaskDone(task.TA_ID_TASK)"
+          [checked]="isTaskDone(task.TA_ID_TASK)"
+        >
+        </mat-checkbox>
+      </div>
+      <div class="task-description">
+        {{ task.TA_DESCRIPTION }}
+      </div>
+      <br />
+      <div class="task-priority-container">
+        <p class="task-priority" [ngClass]="'priority-' + task.TA_PRIORITY">
+          Priority: {{ task.TA_PRIORITY }}
+        </p>
+      </div>
+      <div class="e-d-icon">
+        <div class="edit-icon">
+          <mat-icon (click)="displayDialogs.openUpdateTask(task.TA_ID_TASK)"
+            >edit</mat-icon
+          >
+        </div>
+        <div class="del-icon">
+          <mat-icon (click)="deleteTask(task.TA_ID_TASK)"
+            >delete_forever</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

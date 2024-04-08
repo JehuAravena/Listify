@@ -1,0 +1,15 @@
+.active-link{
+    background-color: #a6dfff;
+}
+
+.active-link p{
+    color: #1d1d1b;
+}
+
+.active-link mat-icon{
+    color: #1d1d1b;
+}
+
+.button-group {
+    display: none;
+  }

@@ -1,0 +1,119 @@
+USE BD_LISTIFY;
+-- ---------------------------------
+-- Permission role inserts to test--
+-- ----------------------------------
+insert into PERMISSIONS
+(PE_ID_PERMISSION,
+PE_NAME,
+PE_DESCRIPTION)
+values (21,
+'Permission_dummy_1',
+'Description dummy');
+
+insert into roles 
+(RO_ID_ROLE,
+RO_NAME,
+RO_DETAIL,
+RO_ACTIVE)
+values (3,
+'Role_dummy_1',
+'Detail dummy',
+1);
+
+-- data dummy de tareas--
+
+INSERT INTO TASKS
+(TA_ID_TASK,
+TA_TITLE,
+TA_DESCRIPTION,
+TA_PRIORITY,
+TA_EXPERIENCE_POINTS,
+TA_STATUS,
+TA_CREATION_DATE,
+TA_END_DATE,
+TA_ID_USER)
+VALUES
+(7,
+'TareaDummyplayer1',
+'Descripcion dummy',
+1,
+10,
+0,
+NOW(),
+NULL,
+2);
+
+INSERT INTO TASKS
+(TA_ID_TASK,
+TA_TITLE,
+TA_DESCRIPTION,
+TA_PRIORITY,
+TA_EXPERIENCE_POINTS,
+TA_STATUS,
+TA_CREATION_DATE,
+TA_END_DATE,
+TA_ID_USER)
+VALUES
+(8,
+'TareaDummyplayer2',
+'Descripcion dummy',
+1,
+10,
+0,
+NOW(),
+NULL,
+2);
+
+-- data dummy user--
+
+INSERT INTO USERS
+(US_ID_USER,
+US_NAME,
+US_NICKNAME,
+US_LASTNAME,
+US_EMAIL,
+US_PASSWORD,
+US_EXPERIENCE,
+US_LEVEL_NAME,
+US_LEVEL,
+US_ID_ROLE,
+US_ACTIVE)
+VALUES 
+(3,
+'USERDUMMYONE',
+'USERDUMMYONE',
+'USERDUMMYONE',
+'USERDUMMYONE@email.com',
+'USERDUMMYONE',
+0,
+'A New Goal',
+1,
+2,
+1);
+
+INSERT INTO USERS
+(US_ID_USER,
+US_NAME,
+US_NICKNAME,
+US_LASTNAME,
+US_EMAIL,
+US_PASSWORD,
+US_EXPERIENCE,
+US_LEVEL_NAME,
+US_LEVEL,
+US_ID_ROLE,
+US_ACTIVE)
+VALUES 
+(4,
+'USERDUMMYTWO',
+'USERDUMMYTWO',
+'USERDUMMYTWO',
+'USERDUMMYTWO@email.com',
+'USERDUMMYTWO',
+0,
+'A New Goal',
+1,
+2,
+1);
+
+

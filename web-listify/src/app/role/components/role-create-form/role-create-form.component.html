@@ -1,0 +1,24 @@
+<div class="create-role-form-container">
+    <form [formGroup]="form" (ngSubmit)="createRole()" class="create-role-form">
+        <div class="title-add">
+            <h1>ADD ROLE</h1>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" class="role-name">
+                <input matInput formControlName="ROLE_NAME_IN" autocomplete="off" placeholder="role name" required>
+                <mat-hint class="hint" *ngIf="isInvalidField('ROLE_NAME_IN')"> {{ fieldValidators.errorByField('ROLE_NAME_IN') }} </mat-hint>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" class="role-description">
+                <input matInput formControlName="ROLE_DESCRIPTION_IN" autocomplete="off" placeholder="Role description" required>
+                <mat-hint class="hint" *ngIf="isInvalidField('ROLE_DESCRIPTION_IN')"> {{ fieldValidators.errorByField('ROLE_DESCRIPTION_IN') }} </mat-hint>
+            </mat-form-field>
+        </div> 
+        <div class="btns-div">
+            <button mat-button class="cancel-button" (click)="displayDialogs.onCancelButton()">Cancel</button> 
+            <button mat-button class="main-button" type="submit" (click)="createRole()">Create</button> 
+        </div>      
+    </form>
+</div> 
+

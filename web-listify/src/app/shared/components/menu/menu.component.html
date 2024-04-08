@@ -1,0 +1,58 @@
+
+<mat-toolbar class="mat-elevation-z0" id="nav">
+  <img src="../../../../assets/img/logo_listify.svg" alt="" />
+  <a id="title">Listify</a>
+  <span class="example-spacer"></span>
+  <div *ngIf="isAdmin">
+    <button id="adminMenu" mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>admin_panel_settings</mat-icon>
+      <p>Admin</p>
+    </button>
+    <mat-menu #menu id="nav">
+      <button id="levels" mat-button routerLink="/level" routerLinkActive="active-link" class="nav-admin-icons">
+        <mat-icon>star</mat-icon>
+        <p>Levels</p>
+      </button>
+      <button id="permissionRoles" mat-button routerLink="/permission" routerLinkActive="active-link" class="nav-admin-icons">
+        <mat-icon>lock</mat-icon>
+        <p>Permission Roles</p>
+      </button>
+      <button id="roles" mat-button routerLink="/role" routerLinkActive="active-link" class="nav-admin-icons">
+        <mat-icon>badge</mat-icon>
+        <p>Roles</p>
+      </button>
+      <button id="users" mat-button routerLink="/user" routerLinkActive="active-link" class="nav-admin-icons">
+        <mat-icon>people</mat-icon>
+        <p>Users</p>
+      </button>
+    </mat-menu>
+  </div>
+  <div *ngIf="isLogged">
+    <button id="task" mat-button routerLink="/task/list" routerLinkActive="active-link">
+      <mat-icon>extension</mat-icon>
+      <p>Tasks</p>
+    </button>
+    <button id="config" mat-button routerLink="/settings" routerLinkActive="active-link">
+      <mat-icon>settings</mat-icon>
+      <p>Settings</p>
+    </button>
+    <button id="logout" mat-button routerLink="/logout" routerLinkActive="active-link">
+      <mat-icon>logout</mat-icon>
+      <p>Logout</p>
+    </button>
+  </div>
+  <div *ngIf="!isLogged">
+    <button id="home" mat-button routerLink="/home" routerLinkActive="active-link">
+      <mat-icon>home</mat-icon>
+      <p>Home</p>
+    </button>
+    <button id="solution" mat-button routerLink="/solution" routerLinkActive="active-link">
+      <mat-icon>extension</mat-icon>
+      <p>Solution</p>
+    </button>
+    <button id="login" mat-button routerLink="/login" routerLinkActive="active-link">
+      <mat-icon>login</mat-icon>
+      <p>Login</p>
+    </button>
+  </div>
+</mat-toolbar>

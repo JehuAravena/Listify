@@ -1,0 +1,49 @@
+
+<mat-form-field class="option-select">
+  <mat-label>Select an option</mat-label>
+  <mat-select [(ngModel)]="selected" (ngModelChange)="getPermission(selected)">
+    <mat-option *ngFor="let role of roles" value="{{ role.RO_ID_ROLE }}">{{
+      role.RO_NAME
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="table-full-container">
+  <mat-form-field class="filter-bar">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Look for..." #input/>
+  </mat-form-field>
+  <div class="table-container">
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="idPR">
+          <th mat-header-cell *matHeaderCellDef>ID PERMISSION-ROLE</th>
+          <td mat-cell *matCellDef="let permission">
+            {{ permission.RP_ID_ROLE_PERMISSION }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="roleName">
+          <th mat-header-cell *matHeaderCellDef>ROLE NAME</th>
+          <td mat-cell *matCellDef="let permission">
+            {{ getRoleName(permission.RP_ID_ROLE) }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="permissionName">
+          <th mat-header-cell *matHeaderCellDef>PERMISSION NAME</th>
+          <td mat-cell *matCellDef="let permission">
+            {{ getPermissionName(permission.RP_ID_PERMISSION) }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let permission">
+            <mat-icon (click)="deletePermissionRole(permission.RP_ID_ROLE_PERMISSION)" class="user-delete-btn">delete_forever</mat-icon>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <hr class="paginator-hr"/>
+      <mat-paginator [length]="100" [pageSizeOptions]="[5, 10, 20]" aria-label="Select page"></mat-paginator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="setting-form-container">
+  <form [formGroup]="form" class=".setting-change-form">
+    <div class="title-add">
+      <h1>CHANGE NICKNAME</h1>
+    </div>
+    <div class="form-change">
+      <mat-form-field appearance="fill" class="">
+        <input
+          matInput
+          type=""
+          formControlName="OLD_NICKNAME_IN"
+          autocomplete="off"
+          placeholder="Old Nickname"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('OLD_NICKNAME_IN')">
+          {{ fieldValidators.errorByField("OLD_NICKNAME_IN") }}
+        </mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="user-password">
+        <input
+          matInput
+          type=""
+          formControlName="NEW_NICKNAME_IN"
+          autocomplete="off"
+          placeholder="New Nickname"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('NEW_NICKNAME_IN')">
+          {{ fieldValidators.errorByField("NEW_NICKNAME_IN") }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="btns-div-setting">
+      <button mat-button class="cancel-button" (click)="onCancelButton()">
+        Cancel
+      </button>
+      <button mat-button class="main-button" (click)="checkNick()">
+        Change
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="create-task-form-container">
+    <form [formGroup]="form" (ngSubmit)="createTask()" class="create-task-form">
+        <div class="create-task-form-title">
+            <mat-form-field appearance="fill" class="field-width-task-form">
+                <input matInput formControlName="TITLE_IN" autocomplete="off" placeholder="New task title here">
+            </mat-form-field>
+            <mat-hint class="hint custom-hint" *ngIf="isInvalidField('TITLE_IN')"> {{ fieldValidators.errorByField('TITLE_IN') }} </mat-hint>
+        </div>
+        <br>
+        <div class="create-task-form-description">
+            <mat-form-field appearance="fill" class="field-width-task-form" >
+                <input matInput formControlName="DESCRIPTION_IN" autocomplete="off" placeholder="Add a description?">
+                <mat-hint class="hint custom-hint" *ngIf="isInvalidField('DESCRIPTION_IN')"> {{ fieldValidators.errorByField('DESCRIPTION_IN') }} </mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="create-task-form-priority">
+            <label id="create-task-form-radio-group-label">Select Priority</label>
+            <mat-radio-group aria-label="Priority" formControlName="PRIORITY_IN">
+                <mat-radio-button value="1">1</mat-radio-button>
+                <mat-radio-button value="2">2</mat-radio-button>
+                <mat-radio-button value="3">3</mat-radio-button>
+            </mat-radio-group>
+            <br>
+            <mat-hint class="hint custom-hint" *ngIf="isInvalidField('PRIORITY_IN')"> {{ fieldValidators.errorByField('PRIORITY_IN') }} </mat-hint>
+        </div>
+        <br>
+        <div class="btns-div">
+            <button class="cancel-button" (click)="displayDialogs.onCancelButton()">Cancel</button> 
+            <button class="main-button" type="submit">Add</button> 
+        </div> 
+    </form>
+</div>
+

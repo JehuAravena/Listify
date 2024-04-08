@@ -1,0 +1,106 @@
+<div class="create-user-form-container">
+  <form [formGroup]="form" (ngSubmit)="updateUser()" class="create-task-form">
+    <div class="title-update">
+      <h1>UPDATE USER</h1>
+      <p>
+        <strong>User ID: {{ data.idUser }}</strong>
+      </p>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" class="user-name">
+        <input
+          matInput
+          formControlName="NAME_IN"
+          autocomplete="off"
+          placeholder="Name"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('NAME_IN')">
+          {{ fieldValidators.errorByField("NAME_IN") }}
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="user-lastname">
+        <input
+          matInput
+          formControlName="LASTNAME_IN"
+          autocomplete="off"
+          placeholder="Lastname"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('LASTNAME_IN')">
+          {{ fieldValidators.errorByField("LASTNAME_IN") }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" class="user-nickname">
+        <input
+          matInput
+          formControlName="NICKNAME_IN"
+          autocomplete="off"
+          placeholder="Nickname"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('NICKNAME_IN')">
+          {{ fieldValidators.errorByField("NICKNAME_IN") }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" class="user-email">
+        <input
+          matInput
+          type="email"
+          formControlName="EMAIL_IN"
+          autocomplete="off"
+          placeholder="Email"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('EMAIL_IN')">
+          {{ fieldValidators.errorByField("EMAIL_IN") }}
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="user-password">
+        <input
+          matInput
+          type="password"
+          formControlName="PASSWORD_IN"
+          autocomplete="off"
+          placeholder="Password"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('PASSWORD_IN')">
+          {{ fieldValidators.errorByField("PASSWORD_IN") }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" class="user-role-in">
+        <mat-label>Select Role</mat-label>
+        <mat-select
+          formControlName="ID_ROLE_IN"
+          autocomplete="off"
+          style="color: black"
+        >
+          <mat-option *ngFor="let role of roles" [value]="role.RO_ID_ROLE">
+            {{ role.RO_NAME }}
+          </mat-option>
+        </mat-select>
+        <mat-hint class="hint" *ngIf="isInvalidField('ID_ROLE_IN')">
+          {{ fieldValidators.errorByField("ID_ROLE_IN") }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="btns-div-user">
+      <button
+        mat-button
+        class="cancel-button"
+        (click)="displayDialogs.onCancelButton()"
+      >
+        Cancel
+      </button>
+      <button mat-button class="main-button" type="submit">Add</button>
+    </div>
+  </form>
+</div>

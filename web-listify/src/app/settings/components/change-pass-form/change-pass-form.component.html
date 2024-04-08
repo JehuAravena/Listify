@@ -1,0 +1,53 @@
+<div class="setting-form-container">
+  <form [formGroup]="form" class=".setting-change-form">
+    <div class="title-add">
+      <h1>CHANGE PASSWORD</h1>
+    </div>
+    <div class="form-change">
+      <mat-form-field appearance="fill" class="user-password">
+        <input
+          matInput
+          type="password"
+          formControlName="OLD_PASSWORD_IN"
+          autocomplete="off"
+          placeholder="Old Password"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('OLD_PASSWORD_IN')">
+          {{ fieldValidators.errorByField("OLD_PASSWORD_IN") }}
+        </mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="user-password">
+        <input
+          matInput
+          type="password"
+          formControlName="NEW_PASSWORD_IN"
+          autocomplete="off"
+          placeholder="New Password"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('NEW_PASSWORD_IN')">
+          {{ fieldValidators.errorByField("NEW_PASSWORD_IN") }}
+        </mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="user-password">
+        <input
+          matInput
+          type="password"
+          formControlName="CONFIRM_PASSWORD_IN"
+          autocomplete="off"
+          placeholder="Confirm New Password"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('CONFIRM_PASSWORD_IN')">
+          {{ fieldValidators.errorByField("CONFIRM_PASSWORD_IN") }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="btns-div-setting">
+      <button mat-button class="cancel-button" (click)="onCancelButton()">
+        Cancel
+      </button>
+      <button mat-button class="main-button" (click)="checkPasswords()">
+        Change
+      </button>
+    </div>
+  </form>
+</div>

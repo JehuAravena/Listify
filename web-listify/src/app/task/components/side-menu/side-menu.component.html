@@ -1,0 +1,12 @@
+<div class="container-side-menu">
+    <button class="add-task" id="all-task-btn" [ngStyle]="{'background-color': !this.taskService.isTodayCheck ? '#FF6E31' : '#0c356a'}" (click)="changeToggle()">
+        All Tasks
+    </button>
+    <button class="add-task" id="today-task-btn" [ngStyle]="{'background-color': this.taskService.isTodayCheck ? '#FF6E31' : '#0c356a'}" (click)="changeToggle()">
+        Today Tasks
+    </button>
+    <button class="add-task" id="add-task-btn" (click)="displayDialogs.openCreateTask()">
+        Add Task
+    </button>
+</div>
+

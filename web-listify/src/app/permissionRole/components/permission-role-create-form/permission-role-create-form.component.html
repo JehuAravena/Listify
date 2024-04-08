@@ -1,0 +1,32 @@
+<div class="create-user-form-container">
+  <form [formGroup]="form" (ngSubmit)="createPR()" class="create-task-form">
+    <div class="title-add-user">
+      <h1>PERMISSION ROLE</h1>
+    </div>
+    <mat-form-field>
+      <mat-label>Select an option</mat-label>
+      <mat-select formControlName="ROLE_ID_IN" [(ngModel)]="selected" (ngModelChange)="getRole(selected)">
+        <mat-option *ngFor="let role of roles" [value]="role.RO_ID_ROLE">
+          {{role.RO_NAME}}
+        </mat-option>        
+      </mat-select>
+    <mat-hint class="hint" *ngIf="isInvalidField('ROLE_ID_IN')"> Field ROLE_ID_IN is required </mat-hint>  
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select a permission</mat-label>
+      <mat-select formControlName="PERMISSION_ID_IN" [(ngModel)]="selectedPermission">
+        <mat-option
+          *ngFor="let permission of permissions"
+          [value]="permission.PE_ID_PERMISSION">
+          {{ permission.PE_NAME }}
+        </mat-option>
+      </mat-select>
+      <mat-hint class="hint" *ngIf="isInvalidField('PERMISSION_ID_IN')"> Field PERMISSION_ID_IN is required </mat-hint>
+    </mat-form-field>
+    <div class="btns-div">
+      <button mat-button class="main-button" type="submit">Add</button>
+      <button mat-button class="cancel-button" (click)="displaysDialogs.onCancelButton()">Cancel</button> 
+    </div>
+  </form>
+</div>
+

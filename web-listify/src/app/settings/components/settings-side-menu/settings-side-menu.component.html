@@ -1,0 +1,12 @@
+<div class="settings-container">
+  <div class="settings-side-menu">
+    <button class="setting-change" id="nick" (click)="isActive('nick')">Change Nickname</button>
+    <button class="setting-change" id="pass" (click)="isActive('pass')">Change Password</button>
+    <button class="setting-change-del"(click)="askConfirmation()">Delete Account <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div>
+    <app-change-pass-form *ngIf="selected === 'pass'"></app-change-pass-form>
+    <app-change-nick-form *ngIf="selected === 'nick'"></app-change-nick-form>
+  </div>
+</div>

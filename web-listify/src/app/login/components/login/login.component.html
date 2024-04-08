@@ -1,0 +1,83 @@
+<div class="login-form-container">
+  <div>
+    <img
+      *ngIf="!user"
+      src="../../../../assets/img/logo_login_page.svg"
+      alt=""
+      class="img-login"
+    />
+    <img *ngIf="user" src="{{ user.photoUrl }}" referrerpolicy="no-referrer" />
+    <div>
+      <h4>{{ user?.name }}</h4>
+      <p>{{ user?.email }}</p>
+    </div>
+  </div>
+  <div *ngIf="!user">
+    <form [formGroup]="form" (ngSubmit)="login()" class="login-form">
+      <mat-form-field appearance="fill" class="field-width-login">
+        <input
+          matInput
+          formControlName="EMAIL_IN"
+          autocomplete="off"
+          placeholder="Your Email"
+          class="login-input-email"
+        />
+        <mat-hint class="hint" *ngIf="isFieldValid('EMAIL_IN')">
+          {{ fieldValidators.errorByField("EMAIL_IN") }}
+        </mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="field-width-login">
+        <input
+          matInput
+          type="password"
+          formControlName="PASSWORD_IN"
+          autocomplete="off"
+          placeholder="Your Password"
+          class="login-input-pass"
+        />
+        <mat-hint class="hint" *ngIf="isFieldValid('PASSWORD_IN')">
+          {{ fieldValidators.errorByField("PASSWORD_IN") }}
+        </mat-hint>
+      </mat-form-field>
+      <div class="btn-div">
+        <button class="login-button" type="submit">Log In</button>
+      </div>
+
+      <asl-google-signin-button
+        class="google-btn"
+        type="icon"
+        size="medium"
+        id="google-signin-button"
+      ></asl-google-signin-button>
+
+      <div class="sign-up-btn">
+        <button mat-raised-button color="primary" [routerLink]="['/register']">
+          Don't have account? Sign Up
+        </button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="user">
+    <div *ngIf="user?.lastName" class="singup-continue">
+      <button mat-raised-button color="primary" (click)="checkIfUserExists()">
+        Continue
+      </button>
+    </div>
+    <div *ngIf="!user?.lastName" class="lacking-last-name">
+      <p>
+        Your Google account is currently lacking your last name. Please update
+        your account by including your last name, or alternatively, consider
+        signing up using your email address.
+      </p>
+    </div>
+    <div class="singup-change">
+      <button
+        mat-raised-button
+        color="primary"
+        onclick="window.location.reload()"
+      >
+        Change Account
+      </button>
+    </div>
+  </div>
+</div>

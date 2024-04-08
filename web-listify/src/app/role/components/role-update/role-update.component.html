@@ -1,0 +1,42 @@
+<div class="create-role-form-container">
+  <form [formGroup]="form" (ngSubmit)="updateRole()" class="create-role-form">
+    <div class="title-update">
+      <h1>UPDATE ROLE</h1>
+    </div>
+
+    <div class="create-role-form-title">
+      <mat-form-field appearance="fill" class="field-width">
+        <input
+          matInput
+          formControlName="ROLE_NAME_IN"
+          autocomplete="on"
+          placeholder="New role title here"
+        />
+      </mat-form-field>
+      <mat-hint class="hint custom-hint" *ngIf="isInvalidField('ROLE_NAME_IN')">
+        {{ fieldValidators.errorByField("ROLE_NAME_IN") }}
+      </mat-hint>
+    </div>
+
+    <div class="create-task-form-description">
+      <mat-form-field appearance="fill" class="field-width">
+        <input
+          matInput
+          formControlName="ROLE_DESCRIPTION_IN"
+          autocomplete="on"
+          placeholder="Add a description?"
+        />
+        <mat-hint class="hint" *ngIf="isInvalidField('ROLE_DESCRIPTION_IN')">
+          {{ fieldValidators.errorByField("ROLE_DESCRIPTION_IN") }}
+        </mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="btns-div">
+      <button class="cancel-button" (click)="displayDialogs.onCancelButton()">
+        Cancel
+      </button>
+      <button class="main-button" type="submit">Update</button>
+    </div>
+  </form>
+</div>

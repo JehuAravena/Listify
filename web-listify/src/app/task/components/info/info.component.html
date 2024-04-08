@@ -1,0 +1,13 @@
+<div class="info-container" *ngFor="let info of userInfo">
+  <div class="info-container-background">
+    <div class="info-bar-background">
+      <div class="info-bar" [style.width]="calculateCompletionPercentage(info)">
+        <p></p>
+      </div>
+      <p class="experience">{{ calculateExperience(info) }}</p>
+    </div>
+    <div class="info-detail">
+      <p>{{ replaceNickname(info) }}</p>
+    </div>
+  </div>
+</div>
